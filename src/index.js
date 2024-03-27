@@ -23,6 +23,12 @@ app.get('/leads', (req, res, next) => {
   });
 });
 
+app.post('/leads', (req, res, next) => {
+  return res.status(200).json({
+    message: 'Hello from leads post!',
+  });
+});
+
 app.get('/path', (req, res, next) => {
   return res.status(200).json({
     message: 'Hello from path!',
