@@ -22,8 +22,17 @@ app.get('/', async (req, res, next) => {
 });
 
 app.get('/leads', async (req, res, next) => {
-  const data = await crud.listLeads();
-  return res.status(200).json(data);
+  const result = await crud.listLeads();
+  return res.status(200).json({
+    leads: result,
+  });
+});
+
+app.get('/leads/:id', async (req, res, next) => {
+  const result = await crud.getLead(req.params.id);
+  return res.status(200).json({
+    item: result,
+  });
 });
 
 app.post('/leads', async (req, res, next) => {
