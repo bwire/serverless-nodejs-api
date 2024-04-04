@@ -2,6 +2,7 @@ const serverless = require('serverless-http');
 const express = require('express');
 const { getDbClient } = require('./db/client');
 const crud = require('./db/crud');
+const validators = require('./db/validators');
 
 const app = express();
 
@@ -26,9 +27,17 @@ app.get('/leads', async (req, res, next) => {
 });
 
 app.post('/leads', async (req, res, next) => {
-  const { body: leadsData } = req;
-  const result = await crud.newLead(leadsData);
-  return res.status(200).json({
+  const { body: postData } = req;
+  const { data, hasError, message } = validators.validateLead(postData);
+
+  if (hasError) {
+    return res.status(400).json({
+      message: message || 'Invalid request, please try again!',
+    });
+  }
+
+  const result = await crud.newLead(data);
+  return res.status(201).json({
     newLead: result,
   });
 });
