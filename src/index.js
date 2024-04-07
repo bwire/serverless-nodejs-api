@@ -10,10 +10,8 @@ app.use(express.json());
 
 app.get('/', async (req, res, next) => {
   const sql = await getDbClient();
-  const now = Date.now();
-
   const [dbNowResult] = await sql`select now();`;
-  const delta = (dbNowResult.now.getTime() - now) / 1000;
+  const delta = (dbNowResult.now.getTime() - Date.now()) / 1000;
 
   return res.status(200).json({
     message: 'Hello from root!',
