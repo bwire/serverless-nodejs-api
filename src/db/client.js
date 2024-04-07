@@ -5,6 +5,7 @@ const schema = require('./schema');
 
 async function getDbClient() {
   const dbUrl = await getDatabaseUrl();
+  console.log('DB url result', dbUrl);
   return neon(dbUrl);
 }
 
