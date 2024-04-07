@@ -42,4 +42,4 @@ jobs:
           export DEFAULT_BRANCH=$(git remote show origin | awk '/HEAD branch/ {print $NF}')
           echo "$PR_BRANCH and $DEFAULT_BRANCH"
           # export DEV_STAGE_INFO=$(npm run info-dev-stage)
-          gh pr create --title "Automated PR from Dev Stage"
+          gh pr create --title "Automated PR from Dev Stage" --body "Coming soon"
