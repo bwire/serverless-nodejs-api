@@ -28,8 +28,8 @@ jobs:
         run: npm install
       - name: Install neonctl and tsx
         run: npm install -g neonctl tsx
-      # - name: Delete Previous Branch
-      #   run: neonctl branches delete dev --api-key ${{ env.API_KEY }}
+      - name: Delete Previous Branch at Neon
+        run: neonctl branches delete dev --api-key ${{ env.API_KEY }}
       #   continue-on-error: true
       # - name: Create Branched Database
       #   run: neonctl branches create --name dev --api-key ${{ env.API_KEY }}
