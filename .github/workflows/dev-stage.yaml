@@ -15,8 +15,8 @@ jobs:
       STAGE: dev
       GH_TOKEN: ${{ github.token }} # github cli -> gh
     steps:
-      # - name: Checkout latest changes
-      - uses: actions/checkout@v4
+      - name: Checkout latest changes
+        uses: actions/checkout@v4
         with:
           fetch-depth: 0
       # - name: Use Node.js
