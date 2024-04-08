@@ -1,8 +1,8 @@
 name: Deploy Production App
 
 on:
-  branches: [main]
   pull_request:
+    branches: [main]
     types: [closed]
   workflow_dispatch:
 
